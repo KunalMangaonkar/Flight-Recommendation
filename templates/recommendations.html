@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Basic table styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color:#ffffff;
+            padding: 0;
+        }
+        
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-family: Congenial, sans-serif;
+            background-color: rgba(14, 14, 108); /* Background color for the banner */
+            border-bottom: 1px solid #ccc; /
+            width: 100%;
+            box-sizing: border-box;
+            height: 30%;
+        }
+
+        .banner-text h1 {
+            margin: 0;
+            font-size: 38px;
+            font-family: Congenial, sans-serif;
+            color: #ffffff; /* Text color for the banner */
+        }
+
+        .logo img {
+            height: 100px; /* Adjust the logo height as needed */
+            /* You can add more styling as per your requirements */
+        }
+        
+        .content {
+            height: 70%; /* 80% of the screen height */
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            border: 2px solid black;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .message {
+            text-align: center;
+            color: red;
+        }
+        
+        /* Center the charts */
+        .chart-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .chart-container img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="banner">
+        <div class="banner-text">
+            <h1>Binghamton Flight Search Tool</h1>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='binghamton.png') }}" alt="Logo">
+        </div>
+    </div>
+    
+    <!-- Display the cheapest flights -->
+    <h2>Cheapest Flights</h2>
+    <div>
+        {{ cheapest | safe }}
+    </div>
+    <!-- Display the cheapest flights chart -->
+    <div class="chart-container">
+    {% if chart_data_flight_1 %}
+    <img src="{{ url_for('static', filename=chart_data_flight_1.filename) }}" alt="Chart for Cheapest Flight">
+    <p>{{ chart_data_flight_1.message }}</p>
+    {% endif %}
+    </div>
+
+    <!-- Display the fastest flights -->
+    <h2>Fastest Flights</h2>
+    <div>
+        {{ fastest | safe }}
+    </div>
+    <!-- Display the fastest flights chart -->
+    <div class="chart-container">
+    {% if chart_data_flight_2 %}
+    <img src="{{ url_for('static', filename=chart_data_flight_2.filename) }}" alt="Chart for the Fastest Flight">
+
+    <p>{{ chart_data_flight_2.message }}</p>
+    {% endif %}
+    </div>
+
+
+    <!-- Display the best value flights -->
+    <h2>Best Value Flights</h2>
+    <div>
+        {{ best_value | safe }}
+    </div>
+    <!-- Display the best value flights chart -->
+    <div class="chart-container">
+    {% if chart_data_flight_3 %}
+    <img src="{{ url_for('static', filename=chart_data_flight_3.filename) }}" alt="Chart for the Bestest Flight">
+    <p>{{ chart_data_flight_3.message }}</p>
+    {% endif %}
+    </div>
+</body>
+</html>

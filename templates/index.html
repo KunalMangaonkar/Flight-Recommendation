@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#ffffff;
+            font-weight: bold;
+            
+        }
+        
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: rgba(14, 14, 108); /* Background color for the banner */
+            border-bottom: 1px solid #ccc; /
+            width: 100%;
+            box-sizing: border-box;
+            height: 40%;
+        }
+
+        .banner-text h1 {
+            margin: 0;
+            font-size: 38px;
+            font-family: Congenial, sans-serif;
+            color: #ffffff; /* Text color for the banner */
+        }
+
+        .logo img {
+            max-height: 80px; /* Maximum height of the logo */
+            width: auto; /* Maintain the aspect ratio */
+            object-fit: contain; /* Ensures the image is scaled correctly within the constraints */
+        }
+        
+        .content {
+            height: 70%; /* 80% of the screen height */
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+        .flight-form {
+            background-color: #b3e6ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"], select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 12px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            width: 700px;
+            height: 700px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="banner-text">
+            <h1>Binghamton Flight Search Tool</h1>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='binghamton.png') }}" alt="Logo">
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>USER INPUT</h1>
+        <div class="flight-form">
+            <form action="/recommend" method="post">
+                <label for="origin">Origin:</label><br>
+                <select id="origin" name="origin">
+                    <option value="">Select Origin</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+             </select><br>
+
+            <label for="destination">Destination:</label><br>
+            <select id="destination" name="destination">
+                <option value="">Select Destination</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+            </select><br>
+
+            <label for="class">Class:</label><br>
+            <select id="class" name="class">
+                <option value="">Select Class</option>
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+            </select><br>
+
+            <label for="stops">Stops:</label><br>
+            <select id="stops" name="stops">
+                <option value="">Select Stops</option>
+                <option value="zero">Zero</option>
+                <option value="one">One</option>
+                <option value="two_or_more">Two or More</option>
+            </select><br>
+
+             <label for="journey_date">Journey Date:</label><br>
+                <input type="date" id="journey_date" name="journey_date"><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+             
+            <div class="image-container">
+            <img src="{{ url_for('static', filename='airplane.jpg') }}" alt="Airplane Image">
+        </div>
+    </div>
+</body>
+</html>
