@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 25 16:35:40 2023
+
+@author: manga
+"""
+
+/* styles.css */
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Image container -->
+    <div class="image-container">
+        <!-- Image -->
+        <img src="{{ url_for('static', filename='your_image.png') }}" alt="Airplane Image">
+    </div>
+</body>
+</html>
